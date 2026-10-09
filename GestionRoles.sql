@@ -25,5 +25,4 @@ CREATE TABLE Administradores (
     email NVARCHAR(100) NOT NULL UNIQUE,
     idRoles INT FOREIGN KEY REFERENCES Roles(idRoles)
 );
-GO
 
