@@ -28,14 +28,14 @@ public class MainView extends VerticalLayout {
         TabSheet tabSheet = new TabSheet();
         tabSheet.setWidthFull();
 
-        tabSheet.add("Entidad 1", crearSeccionEntidad1());
-        tabSheet.add("Entidad 2", crearSeccionEntidad2());
+        tabSheet.add("Usuarios", crearSeccionUsuario());
+        tabSheet.add("Administradores", crearSeccionAdministrador());
 
         add(titulo, tabSheet);
     }
 
     // Método privado para gestionar la primera entidad
-    private Component crearSeccionEntidad1() {
+    private Component crearSeccionUsuario() {
         VerticalLayout layout = new VerticalLayout();
         layout.setPadding(false);
 
@@ -46,20 +46,20 @@ public class MainView extends VerticalLayout {
         FormLayout form = new FormLayout(idField, nombreField, descripcionField);
 
         Button btnCrear = new Button("Crear", e -> 
-            Notification.show("Entidad 1 - Crear: " + nombreField.getValue())
+            Notification.show("Usuarios - Crear: " + nombreField.getValue())
         );
         btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         Button btnConsultar = new Button("Consultar", e -> 
-            Notification.show("Entidad 1 - Consultar ID: " + idField.getValue())
+            Notification.show("Usuarios - Consultar ID: " + idField.getValue())
         );
 
         Button btnActualizar = new Button("Actualizar", e -> 
-            Notification.show("Entidad 1 - Actualizar ID: " + idField.getValue())
+            Notification.show("Usuarios - Actualizar ID: " + idField.getValue())
         );
 
         Button btnEliminar = new Button("Eliminar", e -> 
-            Notification.show("Entidad 1 - Eliminar ID: " + idField.getValue())
+            Notification.show("Usuarios - Eliminar ID: " + idField.getValue())
         );
         btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
@@ -84,7 +84,7 @@ public class MainView extends VerticalLayout {
     }
 
     // Método privado para gestionar la segunda entidad
-    private Component crearSeccionEntidad2() {
+    private Component crearSeccionAdministrador() {
         VerticalLayout layout = new VerticalLayout();
         layout.setPadding(false);
 
@@ -95,20 +95,20 @@ public class MainView extends VerticalLayout {
         FormLayout form = new FormLayout(idField, tituloField, categoriaField);
 
         Button btnCrear = new Button("Crear", e -> 
-            Notification.show("Entidad 2 - Crear: " + tituloField.getValue())
+            Notification.show("Administradores - Crear: " + tituloField.getValue())
         );
         btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         Button btnConsultar = new Button("Consultar", e -> 
-            Notification.show("Entidad 2 - Consultar Código: " + idField.getValue())
+            Notification.show("Administradores - Consultar Código: " + idField.getValue())
         );
 
         Button btnActualizar = new Button("Actualizar", e -> 
-            Notification.show("Entidad 2 - Actualizar Código: " + idField.getValue())
+            Notification.show("Administradores - Actualizar Código: " + idField.getValue())
         );
 
         Button btnEliminar = new Button("Eliminar", e -> 
-            Notification.show("Entidad 2 - Eliminar Código: " + idField.getValue())
+            Notification.show("Administradores - Eliminar Código: " + idField.getValue())
         );
         btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
 

@@ -13,6 +13,7 @@ public class Usuario {
     private String estado; // 'activo', 'inactivo', 'baneado'
     private LocalDateTime fechaRegistro;
 
+
     // ===================
     // Constructor completo
     // ===================
