@@ -3,7 +3,7 @@ package com.example.model;
 import java.time.LocalDateTime;
 
 public class Usuario {
-    private Long id; // para que sea autogenerado por la BD
+    private Long idUsuarios; // para que sea autogenerado por la BD
     private String nombre;
     private String apellido;
     private String email;
@@ -16,9 +16,9 @@ public class Usuario {
     // ===================
     // Constructor completo
     // ===================
-    public Usuario(Long id, String nombre, String apellido, String email, String telefono,
+    public Usuario(Long idUsuarios, String nombre, String apellido, String email, String telefono,
             String direccion, String rol, String estado, LocalDateTime fechaRegistro) {
-        this.id = id;
+        this.idUsuarios = idUsuarios;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -49,11 +49,11 @@ public class Usuario {
     // Getters y setters
     // ===================
     public Long getId() {
-        return id;
+        return idUsuarios;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long idUsuarios) {
+        this.idUsuarios = idUsuarios;
     }
 
     public String getNombre() {
@@ -122,6 +122,6 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", nombre=" + nombre + ", email=" + email + ", rol=" + rol + "]";
+        return "Usuario [id=" + idUsuarios + ", nombre=" + nombre + ", email=" + email + ", rol=" + rol + "]";
     }
 }
