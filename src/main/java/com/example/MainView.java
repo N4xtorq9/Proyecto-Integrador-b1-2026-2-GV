@@ -33,6 +33,7 @@ public class MainView extends VerticalLayout {
         tabSheet.add("Categorías", crearSeccionCategoria());
         tabSheet.add("Productos", crearSeccionProducto());
         tabSheet.add("Intercambios", crearSeccionIntercambio());
+        tabSheet.add("Fotos de Productos", crearSeccionFotosProducto());
 
         add(titulo, tabSheet);
     }
@@ -108,9 +109,15 @@ public class MainView extends VerticalLayout {
         VerticalLayout layout = new VerticalLayout();
         layout.setPadding(false);
 
-        TextField idField = new TextField("Código / ID");
-        TextField tituloField = new TextField("Título");
-        TextField categoriaField = new TextField("Categoría");
+        TextField idAdministradorField = new TextField("idAdministrador / ID");
+        TextField nombreField = new TextField("Nombre");
+        TextField emailField = new TextField("Email");
+        TextField claveField = new TextField("Clave");
+        TextField telefonoField = new TextField("Teléfono");
+        TextField direccionField = new TextField("Dirección");
+        TextField rolField = new TextField("Rol");
+        TextField estadoField = new TextField("Estado");
+        TextField fechaRegistroField = new TextField("Fecha de Registro");
 
         FormLayout form = new FormLayout(idField, tituloField, categoriaField);
 
@@ -144,9 +151,15 @@ public class MainView extends VerticalLayout {
         acciones.getStyle().set("flex-wrap", "wrap");
 
         Grid<String[]> grid = new Grid<>();
-        grid.addColumn(row -> row[0]).setHeader("Código / ID").setAutoWidth(true);
-        grid.addColumn(row -> row[1]).setHeader("Título").setAutoWidth(true);
-        grid.addColumn(row -> row[2]).setHeader("Categoría").setAutoWidth(true);
+        grid.addColumn(row -> row[0]).setHeader("ID").setAutoWidth(true);
+        grid.addColumn(row -> row[1]).setHeader("Nombre").setAutoWidth(true);
+        grid.addColumn(row -> row[2]).setHeader("Email").setAutoWidth(true);
+        grid.addColumn(row -> row[3]).setHeader("Clave").setAutoWidth(true);
+        grid.addColumn(row -> row[4]).setHeader("Teléfono").setAutoWidth(true);
+        grid.addColumn(row -> row[5]).setHeader("Dirección").setAutoWidth(true);
+        grid.addColumn(row -> row[6]).setHeader("Rol").setAutoWidth(true);
+        grid.addColumn(row -> row[7]).setHeader("Estado").setAutoWidth(true);
+        grid.addColumn(row -> row[8]).setHeader("Fecha de Registro").setAutoWidth(true);
 
         layout.add(form, acciones, grid);
         return layout;
@@ -159,7 +172,7 @@ public class MainView extends VerticalLayout {
         layout.setPadding(false);
 
         TextField idField = new TextField("idCategoria / ID");
-        TextField nombreCategoriaField = new TextField("nombreCategoria");
+        TextField nombreCategoriaField = new TextField("Nombre de la Categoría");
 
         FormLayout form = new FormLayout(idField, nombreCategoriaField, categoriaField);
 
@@ -186,6 +199,18 @@ public class MainView extends VerticalLayout {
             nombreCategoriaField.clear();
         });
 
+        HorizontalLayout acciones = new HorizontalLayout(
+            btnCrear, btnConsultar, btnActualizar, btnEliminar, btnLimpiar
+        );
+        acciones.getStyle().set("flex-wrap", "wrap");
+
+        Grid<String[]> grid = new Grid<>();
+        grid.addColumn(row -> row[0]).setHeader("idCategoria").setAutoWidth(true);
+        grid.addColumn(row -> row[1]).setHeader("Nombre de la Categoría").setAutoWidth(true);
+
+        layout.add(form, acciones, grid);
+        return layout;
+
     }
 
     //Sección de Productos
@@ -193,12 +218,12 @@ public class MainView extends VerticalLayout {
         VerticalLayout layout = new VerticalLayout();
         layout.setPadding(false);
 
-        TextField idProductoField = new TextField("idProducto / ID");
-        TextField idUsuarioField = new TextField("idUsuario");
-        TextField nombreProductoField = new TextField("nombreProducto");
-        TextField descripcionField = new TextField("descripcion");
-        TextField idCategoriaField = new TextField("idCategoria");
-        TextField estadoField = new TextField("estado");
+        TextField idProductoField = new TextField("Id Producto / ID");
+        TextField idUsuarioField = new TextField("Id Usuario");
+        TextField nombreProductoField = new TextField("Nombre del Producto");
+        TextField descripcionField = new TextField("Descripción");
+        TextField idCategoriaField = new TextField("Id Categoria");
+        TextField estadoField = new TextField("Estado");
 
         FormLayout form = new FormLayout(idProductoField, idUsuarioField, nombreProductoField, descripcionField, idCategoriaField, estadoField);
 
@@ -229,17 +254,33 @@ public class MainView extends VerticalLayout {
             estadoField.clear();
         });
 
+        HorizontalLayout acciones = new HorizontalLayout(
+            btnCrear, btnConsultar, btnActualizar, btnEliminar, btnLimpiar
+        );
+        acciones.getStyle().set("flex-wrap", "wrap");
+
+        Grid<String[]> grid = new Grid<>();
+        grid.addColumn(row -> row[0]).setHeader("Id Producto").setAutoWidth(true);
+        grid.addColumn(row -> row[1]).setHeader("Id Usuario").setAutoWidth(true);
+        grid.addColumn(row -> row[2]).setHeader("Nombre del Producto").setAutoWidth(true);
+        grid.addColumn(row -> row[3]).setHeader("Descripción").setAutoWidth(true);
+        grid.addColumn(row -> row[4]).setHeader("Id Categoria").setAutoWidth(true);
+        grid.addColumn(row -> row[5]).setHeader("Estado").setAutoWidth(true);
+
+        layout.add(form, acciones, grid);
+        return layout;
     }
+
 
     // Sección de Intercambios
     private Component crearSeccionIntercambio() {
         VerticalLayout layout = new VerticalLayout();
         layout.setPadding(false);
 
-        TextField idIntercambioField = new TextField("idIntercambio / ID");
-        TextField idUsuarioField = new TextField("idUsuario");
-        TextField idProductoField = new TextField("idProducto");
-        TextField estadoField = new TextField("estado");
+        TextField idIntercambioField = new TextField("Id Intercambio / ID");
+        TextField idUsuarioField = new TextField("Id Usuario");
+        TextField idProductoField = new TextField("Id Producto");
+        TextField estadoField = new TextField("Estado");
 
         FormLayout form = new FormLayout(idIntercambioField, idUsuarioField, idProductoField, estadoField);
 
@@ -267,6 +308,70 @@ public class MainView extends VerticalLayout {
             idProductoField.clear();
             estadoField.clear();
         });
+        
+        HorizontalLayout acciones = new HorizontalLayout(
+            btnCrear, btnConsultar, btnActualizar, btnEliminar, btnLimpiar
+        );
+        acciones.getStyle().set("flex-wrap", "wrap");
+
+        Grid<String[]> grid = new Grid<>();
+        grid.addColumn(row -> row[0]).setHeader("Id Intercambio").setAutoWidth(true);
+        grid.addColumn(row -> row[1]).setHeader("Id Usuario").setAutoWidth(true);
+        grid.addColumn(row -> row[2]).setHeader("Id Producto").setAutoWidth(true);
+        grid.addColumn(row -> row[3]).setHeader("Estado").setAutoWidth(true);
+
+        layout.add(form, acciones, grid);
+        return layout;
+
+    }
+
+    // Sección de Fotos de Productos
+    private Component crearSeccionFotosProducto() {
+        VerticalLayout layout = new VerticalLayout();
+        layout.setPadding(false);
+
+        TextField idFotoField = new TextField("Id Foto / ID");
+        TextField idProductoField = new TextField("Id Producto");
+        TextField urlFotoField = new TextField("URL Foto");
+
+        FormLayout form = new FormLayout(idFotoField, idProductoField, urlFotoField);
+
+        Button btnCrear = new Button("Crear", e -> 
+            Notification.show("Fotos de Productos - Crear: " + idFotoField.getValue())
+        );
+        btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+        Button btnConsultar = new Button("Consultar", e -> 
+            Notification.show("Fotos de Productos - Consultar idFoto: " + idFotoField.getValue())
+        );
+
+        Button btnActualizar = new Button("Actualizar", e -> 
+            Notification.show("Fotos de Productos - Actualizar idFoto: " + idFotoField.getValue())
+        );
+
+        Button btnEliminar = new Button("Eliminar", e -> 
+            Notification.show("Fotos de Productos - Eliminar idFoto: " + idFotoField.getValue())
+        );
+        btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
+
+        Button btnLimpiar = new Button("Limpiar", e -> {
+            idFotoField.clear();
+            idProductoField.clear();
+            urlFotoField.clear();
+        });
+
+        HorizontalLayout acciones = new HorizontalLayout(
+            btnCrear, btnConsultar, btnActualizar, btnEliminar, btnLimpiar
+        );
+        acciones.getStyle().set("flex-wrap", "wrap");
+
+        Grid<String[]> grid = new Grid<>();
+        grid.addColumn(row -> row[0]).setHeader("Id Foto").setAutoWidth(true);
+        grid.addColumn(row -> row[1]).setHeader("Id Producto").setAutoWidth(true);
+        grid.addColumn(row -> row[2]).setHeader("URL Foto").setAutoWidth(true);
+
+        layout.add(form, acciones, grid);
+        return layout;
 
     }
 
