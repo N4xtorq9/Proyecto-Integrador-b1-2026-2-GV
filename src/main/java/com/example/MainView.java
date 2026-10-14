@@ -30,6 +30,7 @@ public class MainView extends VerticalLayout {
 
         tabSheet.add("Usuarios", crearSeccionUsuario());
         tabSheet.add("Administradores", crearSeccionAdministrador());
+        tabSheet.add("Categorías", new VerticalLayout(new H2("Gestión de Categorías")));
 
         add(titulo, tabSheet);
     }
@@ -41,9 +42,14 @@ public class MainView extends VerticalLayout {
 
         TextField idField = new TextField("ID");
         TextField nombreField = new TextField("Nombre");
-        TextField descripcionField = new TextField("Descripción");
+        TextField emailField = new TextField("Email");
+        TextField claveField = new TextField("Clave");
+        TextField fechaNacimientoField = new TextField("Fecha de Nacimiento");
+        TextField telefonoField = new TextField("Teléfono");
+        TextField direccionField = new TextField("Dirección");
+        TextField estadoField = new TextField("Estado");
 
-        FormLayout form = new FormLayout(idField, nombreField, descripcionField);
+        FormLayout form = new FormLayout(idField, nombreField, emailField, claveField, fechaNacimientoField, telefonoField, direccionField, estadoField);
 
         Button btnCrear = new Button("Crear", e -> 
             Notification.show("Usuarios - Crear: " + nombreField.getValue())
@@ -66,7 +72,12 @@ public class MainView extends VerticalLayout {
         Button btnLimpiar = new Button("Limpiar", e -> {
             idField.clear();
             nombreField.clear();
-            descripcionField.clear();
+            emailField.clear();
+            claveField.clear();
+            fechaNacimientoField.clear();
+            telefonoField.clear();
+            direccionField.clear();
+            estadoField.clear();
         });
 
         HorizontalLayout acciones = new HorizontalLayout(
@@ -77,7 +88,12 @@ public class MainView extends VerticalLayout {
         Grid<String[]> grid = new Grid<>();
         grid.addColumn(row -> row[0]).setHeader("ID").setAutoWidth(true);
         grid.addColumn(row -> row[1]).setHeader("Nombre").setAutoWidth(true);
-        grid.addColumn(row -> row[2]).setHeader("Descripción").setAutoWidth(true);
+        grid.addColumn(row -> row[2]).setHeader("Email").setAutoWidth(true);
+        grid.addColumn(row -> row[3]).setHeader("Clave").setAutoWidth(true);
+        grid.addColumn(row -> row[4]).setHeader("Fecha de Nacimiento").setAutoWidth(true);
+        grid.addColumn(row -> row[5]).setHeader( "Teléfono").setAutoWidth(true);
+        grid.addColumn(row -> row[6]).setHeader("Dirección").setAutoWidth(true);
+        grid.addColumn(row -> row[7]).setHeader("Estado").setAutoWidth(true);
 
         layout.add(form, acciones, grid);
         return layout;
@@ -130,5 +146,41 @@ public class MainView extends VerticalLayout {
 
         layout.add(form, acciones, grid);
         return layout;
+    }
+
+    private Component crearSeccionCategoria() {
+        VerticalLayout layout = new VerticalLayout();
+        layout.setPadding(false);
+
+        TextField idField = new TextField("Código / ID");
+        TextField tituloField = new TextField("Título");
+        TextField categoriaField = new TextField("Categoría");
+
+        FormLayout form = new FormLayout(idField, tituloField, categoriaField);
+
+        Button btnCrear = new Button("Crear", e -> 
+            Notification.show("Administradores - Crear: " + tituloField.getValue())
+        );
+        btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+        Button btnConsultar = new Button("Consultar", e -> 
+            Notification.show("Administradores - Consultar Código: " + idField.getValue())
+        );
+
+        Button btnActualizar = new Button("Actualizar", e -> 
+            Notification.show("Administradores - Actualizar Código: " + idField.getValue())
+        );
+
+        Button btnEliminar = new Button("Eliminar", e -> 
+            Notification.show("Administradores - Eliminar Código: " + idField.getValue())
+        );
+        btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
+
+        Button btnLimpiar = new Button("Limpiar", e -> {
+            idField.clear();
+            tituloField.clear();
+            categoriaField.clear();
+        });
+
     }
 }

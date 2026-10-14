@@ -14,3 +14,5 @@ public class Administradores {
     private String estado; // 'activo', 'inactivo', 'baneado'
     private LocalDateTime fechaRegistro;
 }
+
+
