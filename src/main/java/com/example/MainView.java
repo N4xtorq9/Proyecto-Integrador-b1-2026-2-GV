@@ -30,7 +30,9 @@ public class MainView extends VerticalLayout {
 
         tabSheet.add("Usuarios", crearSeccionUsuario());
         tabSheet.add("Administradores", crearSeccionAdministrador());
-        tabSheet.add("Categorías", new VerticalLayout(new H2("Gestión de Categorías")));
+        tabSheet.add("Categorías", crearSeccionCategoria());
+        tabSheet.add("Productos", crearSeccionProducto());
+        tabSheet.add("Intercambios", crearSeccionIntercambio());
 
         add(titulo, tabSheet);
     }
@@ -99,6 +101,8 @@ public class MainView extends VerticalLayout {
         return layout;
     }
 
+
+    //Sección de Administradores
     // Método privado para gestionar la segunda entidad
     private Component crearSeccionAdministrador() {
         VerticalLayout layout = new VerticalLayout();
@@ -148,39 +152,122 @@ public class MainView extends VerticalLayout {
         return layout;
     }
 
+    //Sección de Categorías
+
     private Component crearSeccionCategoria() {
         VerticalLayout layout = new VerticalLayout();
         layout.setPadding(false);
 
-        TextField idField = new TextField("Código / ID");
-        TextField tituloField = new TextField("Título");
-        TextField categoriaField = new TextField("Categoría");
+        TextField idField = new TextField("idCategoria / ID");
+        TextField nombreCategoriaField = new TextField("nombreCategoria");
 
-        FormLayout form = new FormLayout(idField, tituloField, categoriaField);
+        FormLayout form = new FormLayout(idField, nombreCategoriaField, categoriaField);
 
         Button btnCrear = new Button("Crear", e -> 
-            Notification.show("Administradores - Crear: " + tituloField.getValue())
+            Notification.show("Categorías - Crear: " + nombreCategoriaField.getValue())
         );
         btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         Button btnConsultar = new Button("Consultar", e -> 
-            Notification.show("Administradores - Consultar Código: " + idField.getValue())
+            Notification.show("Categorías - Consultar idCategoria: " + idField.getValue())
         );
 
         Button btnActualizar = new Button("Actualizar", e -> 
-            Notification.show("Administradores - Actualizar Código: " + idField.getValue())
+            Notification.show("Categorías - Actualizar idCategoria: " + idField.getValue())
         );
 
         Button btnEliminar = new Button("Eliminar", e -> 
-            Notification.show("Administradores - Eliminar Código: " + idField.getValue())
+            Notification.show("Categorías - Eliminar idCategoria: " + idField.getValue())
         );
         btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
         Button btnLimpiar = new Button("Limpiar", e -> {
             idField.clear();
-            tituloField.clear();
-            categoriaField.clear();
+            nombreCategoriaField.clear();
         });
 
     }
+
+    //Sección de Productos
+    private Component crearSeccionProducto() {
+        VerticalLayout layout = new VerticalLayout();
+        layout.setPadding(false);
+
+        TextField idProductoField = new TextField("idProducto / ID");
+        TextField idUsuarioField = new TextField("idUsuario");
+        TextField nombreProductoField = new TextField("nombreProducto");
+        TextField descripcionField = new TextField("descripcion");
+        TextField idCategoriaField = new TextField("idCategoria");
+        TextField estadoField = new TextField("estado");
+
+        FormLayout form = new FormLayout(idProductoField, idUsuarioField, nombreProductoField, descripcionField, idCategoriaField, estadoField);
+
+        Button btnCrear = new Button("Crear", e -> 
+            Notification.show("Productos - Crear: " + nombreProductoField.getValue())
+        );
+        btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+        Button btnConsultar = new Button("Consultar", e -> 
+            Notification.show("Productos - Consultar idProducto: " + idProductoField.getValue())
+        );
+
+        Button btnActualizar = new Button("Actualizar", e -> 
+            Notification.show("Productos - Actualizar idProducto: " + idProductoField.getValue())
+        );
+
+        Button btnEliminar = new Button("Eliminar", e -> 
+            Notification.show("Productos - Eliminar idProducto: " + idProductoField.getValue())
+        );
+        btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
+
+        Button btnLimpiar = new Button("Limpiar", e -> {
+            idProductoField.clear();
+            idUsuarioField.clear();
+            nombreProductoField.clear();
+            descripcionField.clear();
+            idCategoriaField.clear();
+            estadoField.clear();
+        });
+
+    }
+
+    // Sección de Intercambios
+    private Component crearSeccionIntercambio() {
+        VerticalLayout layout = new VerticalLayout();
+        layout.setPadding(false);
+
+        TextField idIntercambioField = new TextField("idIntercambio / ID");
+        TextField idUsuarioField = new TextField("idUsuario");
+        TextField idProductoField = new TextField("idProducto");
+        TextField estadoField = new TextField("estado");
+
+        FormLayout form = new FormLayout(idIntercambioField, idUsuarioField, idProductoField, estadoField);
+
+        Button btnCrear = new Button("Crear", e -> 
+            Notification.show("Intercambios - Crear: " + idIntercambioField.getValue())
+        );
+        btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+        Button btnConsultar = new Button("Consultar", e -> 
+            Notification.show("Intercambios - Consultar idIntercambio: " + idIntercambioField.getValue())
+        );
+
+        Button btnActualizar = new Button("Actualizar", e -> 
+            Notification.show("Intercambios - Actualizar idIntercambio: " + idIntercambioField.getValue())
+        );
+
+        Button btnEliminar = new Button("Eliminar", e -> 
+            Notification.show("Intercambios - Eliminar idIntercambio: " + idIntercambioField.getValue())
+        );
+        btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
+
+        Button btnLimpiar = new Button("Limpiar", e -> {
+            idIntercambioField.clear();
+            idUsuarioField.clear();
+            idProductoField.clear();
+            estadoField.clear();
+        });
+
+    }
+
 }

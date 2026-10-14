@@ -22,7 +22,7 @@ CREATE TABLE Categorias (
 CREATE TABLE Productos (
     IdProducto INT IDENTITY(1,1) PRIMARY KEY,
     IdUsuario INT NOT NULL,
-    Nombre NVARCHAR(100) NOT NULL,
+    NombreProducto NVARCHAR(100) NOT NULL,
     Descripcion NVARCHAR(500),
     IdCategoria INT NOT NULL,
     Estado NVARCHAR(20) DEFAULT 'Disponible', 

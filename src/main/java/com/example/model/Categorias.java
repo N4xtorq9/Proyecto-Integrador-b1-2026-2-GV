@@ -1,29 +1,29 @@
 package com.example.model;
 
 public class Categorias {
-    private int IdCategoria;
+    private int idCategoria;
     private String nombreCategoria;
 
 
     public Categorias(int idCategoria, String nombreCategoria) {
-        IdCategoria = idCategoria;
+        this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
     }
 
 
     public Categorias(int idCategoria, String nombreCategoria) {
-        IdCategoria = idCategoria;
+        this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
     }
 
 
     public int getIdCategoria() {
-        return IdCategoria;
+        return idCategoria;
     }
 
 
     public void setIdCategoria(int idCategoria) {
-        IdCategoria = idCategoria;
+        this.idCategoria = idCategoria;
     }
 
 
