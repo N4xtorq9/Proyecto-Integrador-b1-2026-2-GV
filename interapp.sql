@@ -36,7 +36,6 @@ CREATE TABLE FotosProducto (
     IdFoto INT IDENTITY(1,1) PRIMARY KEY,
     IdProducto INT NOT NULL,
     UrlFoto NVARCHAR(200) NOT NULL,
-    EsPrincipal BIT DEFAULT 0,
     FOREIGN KEY (IdProducto) REFERENCES Productos(IdProducto)
 );
 

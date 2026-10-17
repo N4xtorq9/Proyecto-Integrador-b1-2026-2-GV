@@ -14,7 +14,7 @@ public class Administradores {
     private String estado; // 'activo', 'inactivo', 'baneado'
     private LocalDateTime fechaRegistro;
 
-    public Administradores(Long idAdministrador, String nombre, String email, String telefono, String direccion, String rol, String estado, LocalDateTime fechaRegistro) {
+    public Administradores(Long idAdministrador, String nombre, String email, String telefono, String clave, String direccion, String rol, String estado, LocalDateTime fechaRegistro) {
         this.idAdministrador = idAdministrador;
         this.nombre = nombre;
         this.email = email;
@@ -25,20 +25,6 @@ public class Administradores {
         this.estado = estado;
         this.fechaRegistro = fechaRegistro; 
 
-        
-    }
-
-    public Administradores(Long idAdministrador, String nombre, String email, String clave, String telefono,
-            String direccion, String rol, String estado, LocalDateTime fechaRegistro) {
-        this.idAdministrador = idAdministrador;
-        this.nombre = nombre;
-        this.email = email;
-        this.clave = clave;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.rol = rol;
-        this.estado = estado;
-        this.fechaRegistro = fechaRegistro;
     }
 
     public Long getIdAdministrador() {
