@@ -14,7 +14,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@PageTitle("Gestión CRUD - 2 Entidades")
+@PageTitle("Gestión de Roles InterApp")
 @Route("")
 public class MainView extends VerticalLayout {
 
@@ -23,50 +23,62 @@ public class MainView extends VerticalLayout {
         setPadding(true);
         setSpacing(true);
 
-        H2 titulo = new H2("Gestión de Entidades (CRUD)");
+        H2 titulo = new H2("Gestión de Roles InterApp");
 
         TabSheet tabSheet = new TabSheet();
         tabSheet.setWidthFull();
 
-        tabSheet.add("Entidad 1", crearSeccionEntidad1());
-        tabSheet.add("Entidad 2", crearSeccionEntidad2());
+        tabSheet.add("Usuarios", crearSeccionUsuario());
+        tabSheet.add("Administradores", crearSeccionAdministrador());
+        tabSheet.add("Categorías", crearSeccionCategoria());
+        tabSheet.add("Productos", crearSeccionProducto());
+        tabSheet.add("Intercambios", crearSeccionIntercambio());
+        tabSheet.add("Fotos de Productos", crearSeccionFotosProducto());
 
         add(titulo, tabSheet);
     }
 
     // Método privado para gestionar la primera entidad
-    private Component crearSeccionEntidad1() {
+    private Component crearSeccionUsuario() {
         VerticalLayout layout = new VerticalLayout();
         layout.setPadding(false);
 
         TextField idField = new TextField("ID");
         TextField nombreField = new TextField("Nombre");
-        TextField descripcionField = new TextField("Descripción");
+        TextField emailField = new TextField("Email");
+        TextField claveField = new TextField("Clave");
+        TextField fechaNacimientoField = new TextField("Fecha de Nacimiento");
+        TextField telefonoField = new TextField("Teléfono");
+        TextField estadoField = new TextField("Estado");
 
-        FormLayout form = new FormLayout(idField, nombreField, descripcionField);
+        FormLayout form = new FormLayout(idField, nombreField, emailField, claveField, fechaNacimientoField, telefonoField, estadoField);
 
         Button btnCrear = new Button("Crear", e -> 
-            Notification.show("Entidad 1 - Crear: " + nombreField.getValue())
+            Notification.show("Usuarios - Crear: " + nombreField.getValue())
         );
         btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         Button btnConsultar = new Button("Consultar", e -> 
-            Notification.show("Entidad 1 - Consultar ID: " + idField.getValue())
+            Notification.show("Usuarios - Consultar ID: " + idField.getValue())
         );
 
         Button btnActualizar = new Button("Actualizar", e -> 
-            Notification.show("Entidad 1 - Actualizar ID: " + idField.getValue())
+            Notification.show("Usuarios - Actualizar ID: " + idField.getValue())
         );
 
         Button btnEliminar = new Button("Eliminar", e -> 
-            Notification.show("Entidad 1 - Eliminar ID: " + idField.getValue())
+            Notification.show("Usuarios - Eliminar ID: " + idField.getValue())
         );
         btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
         Button btnLimpiar = new Button("Limpiar", e -> {
             idField.clear();
             nombreField.clear();
-            descripcionField.clear();
+            emailField.clear();
+            claveField.clear();
+            fechaNacimientoField.clear();
+            telefonoField.clear();
+            estadoField.clear();
         });
 
         HorizontalLayout acciones = new HorizontalLayout(
@@ -77,45 +89,57 @@ public class MainView extends VerticalLayout {
         Grid<String[]> grid = new Grid<>();
         grid.addColumn(row -> row[0]).setHeader("ID").setAutoWidth(true);
         grid.addColumn(row -> row[1]).setHeader("Nombre").setAutoWidth(true);
-        grid.addColumn(row -> row[2]).setHeader("Descripción").setAutoWidth(true);
+        grid.addColumn(row -> row[2]).setHeader("Email").setAutoWidth(true);
+        grid.addColumn(row -> row[3]).setHeader("Clave").setAutoWidth(true);
+        grid.addColumn(row -> row[4]).setHeader("Fecha de Nacimiento").setAutoWidth(true);
+        grid.addColumn(row -> row[5]).setHeader( "Teléfono").setAutoWidth(true);
+        grid.addColumn(row -> row[6]).setHeader("Estado").setAutoWidth(true);
 
         layout.add(form, acciones, grid);
         return layout;
     }
 
+
+    //Sección de Administradores
     // Método privado para gestionar la segunda entidad
-    private Component crearSeccionEntidad2() {
+    private Component crearSeccionAdministrador() {
         VerticalLayout layout = new VerticalLayout();
         layout.setPadding(false);
 
-        TextField idField = new TextField("Código / ID");
-        TextField tituloField = new TextField("Título");
-        TextField categoriaField = new TextField("Categoría");
+        TextField idAdministradorField = new TextField("idAdministrador / ID");
+        TextField nombreField = new TextField("Nombre");
+        TextField emailField = new TextField("Email");
+        TextField claveField = new TextField("Clave");
+        TextField telefonoField = new TextField("Teléfono");
+        TextField direccionField = new TextField("Dirección");
+        TextField rolField = new TextField("Rol");
+        TextField estadoField = new TextField("Estado");
+        TextField fechaRegistroField = new TextField("Fecha de Registro");
 
-        FormLayout form = new FormLayout(idField, tituloField, categoriaField);
+        FormLayout form = new FormLayout(idAdministradorField, nombreField, emailField, claveField, telefonoField, direccionField, rolField, estadoField, fechaRegistroField);
 
         Button btnCrear = new Button("Crear", e -> 
-            Notification.show("Entidad 2 - Crear: " + tituloField.getValue())
+            Notification.show("Administradores - Crear: " + nombreField.getValue())
         );
         btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         Button btnConsultar = new Button("Consultar", e -> 
-            Notification.show("Entidad 2 - Consultar Código: " + idField.getValue())
+            Notification.show("Administradores - Consultar Código: " + idAdministradorField.getValue())
         );
 
         Button btnActualizar = new Button("Actualizar", e -> 
-            Notification.show("Entidad 2 - Actualizar Código: " + idField.getValue())
+            Notification.show("Administradores - Actualizar Código: " + idAdministradorField.getValue())
         );
 
         Button btnEliminar = new Button("Eliminar", e -> 
-            Notification.show("Entidad 2 - Eliminar Código: " + idField.getValue())
+            Notification.show("Administradores - Eliminar Código: " + idAdministradorField.getValue())
         );
         btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
         Button btnLimpiar = new Button("Limpiar", e -> {
-            idField.clear();
-            tituloField.clear();
-            categoriaField.clear();
+            nombreField.clear();
+            idAdministradorField.clear();
+            idAdministradorField.clear();
         });
 
         HorizontalLayout acciones = new HorizontalLayout(
@@ -124,11 +148,234 @@ public class MainView extends VerticalLayout {
         acciones.getStyle().set("flex-wrap", "wrap");
 
         Grid<String[]> grid = new Grid<>();
-        grid.addColumn(row -> row[0]).setHeader("Código / ID").setAutoWidth(true);
-        grid.addColumn(row -> row[1]).setHeader("Título").setAutoWidth(true);
-        grid.addColumn(row -> row[2]).setHeader("Categoría").setAutoWidth(true);
+        grid.addColumn(row -> row[0]).setHeader("ID").setAutoWidth(true);
+        grid.addColumn(row -> row[1]).setHeader("Nombre").setAutoWidth(true);
+        grid.addColumn(row -> row[2]).setHeader("Email").setAutoWidth(true);
+        grid.addColumn(row -> row[3]).setHeader("Clave").setAutoWidth(true);
+        grid.addColumn(row -> row[4]).setHeader("Teléfono").setAutoWidth(true);
+        grid.addColumn(row -> row[5]).setHeader("Dirección").setAutoWidth(true);
+        grid.addColumn(row -> row[6]).setHeader("Rol").setAutoWidth(true);
+        grid.addColumn(row -> row[7]).setHeader("Estado").setAutoWidth(true);
+        grid.addColumn(row -> row[8]).setHeader("Fecha de Registro").setAutoWidth(true);
 
         layout.add(form, acciones, grid);
         return layout;
     }
+
+    //Sección de Categorías
+
+    private Component crearSeccionCategoria() {
+        VerticalLayout layout = new VerticalLayout();
+        layout.setPadding(false);
+
+        TextField idField = new TextField("idCategoria / ID");
+        TextField nombreCategoriaField = new TextField("Nombre de la Categoría");
+
+        FormLayout form = new FormLayout(idField, nombreCategoriaField);
+
+        Button btnCrear = new Button("Crear", e -> 
+            Notification.show("Categorías - Crear: " + nombreCategoriaField.getValue())
+        );
+        btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+        Button btnConsultar = new Button("Consultar", e -> 
+            Notification.show("Categorías - Consultar idCategoria: " + idField.getValue())
+        );
+
+        Button btnActualizar = new Button("Actualizar", e -> 
+            Notification.show("Categorías - Actualizar idCategoria: " + idField.getValue())
+        );
+
+        Button btnEliminar = new Button("Eliminar", e -> 
+            Notification.show("Categorías - Eliminar idCategoria: " + idField.getValue())
+        );
+        btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
+
+        Button btnLimpiar = new Button("Limpiar", e -> {
+            idField.clear();
+            nombreCategoriaField.clear();
+        });
+
+        HorizontalLayout acciones = new HorizontalLayout(
+            btnCrear, btnConsultar, btnActualizar, btnEliminar, btnLimpiar
+        );
+        acciones.getStyle().set("flex-wrap", "wrap");
+
+        Grid<String[]> grid = new Grid<>();
+        grid.addColumn(row -> row[0]).setHeader("idCategoria").setAutoWidth(true);
+        grid.addColumn(row -> row[1]).setHeader("Nombre de la Categoría").setAutoWidth(true);
+
+        layout.add(form, acciones, grid);
+        return layout;
+
+    }
+
+    //Sección de Productos
+    private Component crearSeccionProducto() {
+        VerticalLayout layout = new VerticalLayout();
+        layout.setPadding(false);
+
+        TextField idProductoField = new TextField("Id Producto / ID");
+        TextField idUsuarioField = new TextField("Id Usuario");
+        TextField idCategoriaField = new TextField("Id Categoria");
+        TextField IdAdministradorField = new TextField("Id Administrador");
+        TextField nombreProductoField = new TextField("Nombre del Producto");
+        TextField descripcionField = new TextField("Descripción");
+        TextField estadoField = new TextField("Estado");
+
+        FormLayout form = new FormLayout(idProductoField, idUsuarioField, idCategoriaField, IdAdministradorField, nombreProductoField, descripcionField, estadoField);
+
+        Button btnCrear = new Button("Crear", e -> 
+            Notification.show("Productos - Crear: " + nombreProductoField.getValue())
+        );
+        btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+        Button btnConsultar = new Button("Consultar", e -> 
+            Notification.show("Productos - Consultar idProducto: " + idProductoField.getValue())
+        );
+
+        Button btnActualizar = new Button("Actualizar", e -> 
+            Notification.show("Productos - Actualizar idProducto: " + idProductoField.getValue())
+        );
+
+        Button btnEliminar = new Button("Eliminar", e -> 
+            Notification.show("Productos - Eliminar idProducto: " + idProductoField.getValue())
+        );
+        btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
+
+        Button btnLimpiar = new Button("Limpiar", e -> {
+            idProductoField.clear();
+            idUsuarioField.clear();
+            idCategoriaField.clear();
+            IdAdministradorField.clear();
+            nombreProductoField.clear();
+            descripcionField.clear();
+            estadoField.clear();
+        });
+
+        HorizontalLayout acciones = new HorizontalLayout(
+            btnCrear, btnConsultar, btnActualizar, btnEliminar, btnLimpiar
+        );
+        acciones.getStyle().set("flex-wrap", "wrap");
+
+        Grid<String[]> grid = new Grid<>();
+        grid.addColumn(row -> row[0]).setHeader("Id Producto").setAutoWidth(true);
+        grid.addColumn(row -> row[1]).setHeader("Id Usuario").setAutoWidth(true);
+        grid.addColumn(row -> row[2]).setHeader("Id Categoria").setAutoWidth(true);
+        grid.addColumn(row -> row[3]).setHeader("Id Administrador").setAutoWidth(true);
+        grid.addColumn(row -> row[4]).setHeader("Nombre del Producto").setAutoWidth(true);
+        grid.addColumn(row -> row[5]).setHeader("Descripción").setAutoWidth(true);
+        grid.addColumn(row -> row[6]).setHeader("Estado").setAutoWidth(true);
+
+        layout.add(form, acciones, grid);
+        return layout;
+    }
+
+
+    // Sección de Intercambios
+    private Component crearSeccionIntercambio() {
+        VerticalLayout layout = new VerticalLayout();
+        layout.setPadding(false);
+
+        TextField idIntercambioField = new TextField("Id Intercambio / ID");
+        TextField idUsuarioField = new TextField("Id Usuario");
+        TextField idProductoField = new TextField("Id Producto");
+        TextField IdAdministradorField = new TextField("Id Administrador");
+        TextField estadoField = new TextField("Estado");
+
+        FormLayout form = new FormLayout(idIntercambioField, idUsuarioField, idProductoField, IdAdministradorField, estadoField);
+
+        Button btnCrear = new Button("Crear", e -> 
+            Notification.show("Intercambios - Crear: " + idIntercambioField.getValue())
+        );
+        btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+        Button btnConsultar = new Button("Consultar", e -> 
+            Notification.show("Intercambios - Consultar idIntercambio: " + idIntercambioField.getValue())
+        );
+
+        Button btnActualizar = new Button("Actualizar", e -> 
+            Notification.show("Intercambios - Actualizar idIntercambio: " + idIntercambioField.getValue())
+        );
+
+        Button btnEliminar = new Button("Eliminar", e -> 
+            Notification.show("Intercambios - Eliminar idIntercambio: " + idIntercambioField.getValue())
+        );
+        btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
+
+        Button btnLimpiar = new Button("Limpiar", e -> {
+            idIntercambioField.clear();
+            idUsuarioField.clear();
+            idProductoField.clear();
+            IdAdministradorField.clear();
+            estadoField.clear();
+        });
+        
+        HorizontalLayout acciones = new HorizontalLayout(
+            btnCrear, btnConsultar, btnActualizar, btnEliminar, btnLimpiar
+        );
+        acciones.getStyle().set("flex-wrap", "wrap");
+
+        Grid<String[]> grid = new Grid<>();
+        grid.addColumn(row -> row[0]).setHeader("Id Intercambio").setAutoWidth(true);
+        grid.addColumn(row -> row[1]).setHeader("Id Usuario").setAutoWidth(true);
+        grid.addColumn(row -> row[2]).setHeader("Id Producto").setAutoWidth(true);
+        grid.addColumn(row -> row[3]).setHeader("Id Administrador").setAutoWidth(true);
+        grid.addColumn(row -> row[4]).setHeader("Estado").setAutoWidth(true);
+
+        layout.add(form, acciones, grid);
+        return layout;
+
+    }
+
+    // Sección de Fotos de Productos
+    private Component crearSeccionFotosProducto() {
+        VerticalLayout layout = new VerticalLayout();
+        layout.setPadding(false);
+
+        TextField idFotoField = new TextField("Id Foto / ID");
+        TextField idProductoField = new TextField("Id Producto");
+        TextField urlFotoField = new TextField("URL Foto");
+
+        FormLayout form = new FormLayout(idFotoField, idProductoField, urlFotoField);
+
+        Button btnCrear = new Button("Crear", e -> 
+            Notification.show("Fotos de Productos - Crear: " + idFotoField.getValue())
+        );
+        btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+
+        Button btnConsultar = new Button("Consultar", e -> 
+            Notification.show("Fotos de Productos - Consultar idFoto: " + idFotoField.getValue())
+        );
+
+        Button btnActualizar = new Button("Actualizar", e -> 
+            Notification.show("Fotos de Productos - Actualizar idFoto: " + idFotoField.getValue())
+        );
+
+        Button btnEliminar = new Button("Eliminar", e -> 
+            Notification.show("Fotos de Productos - Eliminar idFoto: " + idFotoField.getValue())
+        );
+        btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
+
+        Button btnLimpiar = new Button("Limpiar", e -> {
+            idFotoField.clear();
+            idProductoField.clear();
+            urlFotoField.clear();
+        });
+
+        HorizontalLayout acciones = new HorizontalLayout(
+            btnCrear, btnConsultar, btnActualizar, btnEliminar, btnLimpiar
+        );
+        acciones.getStyle().set("flex-wrap", "wrap");
+
+        Grid<String[]> grid = new Grid<>();
+        grid.addColumn(row -> row[0]).setHeader("Id Foto").setAutoWidth(true);
+        grid.addColumn(row -> row[1]).setHeader("Id Producto").setAutoWidth(true);
+        grid.addColumn(row -> row[2]).setHeader("URL Foto").setAutoWidth(true);
+
+        layout.add(form, acciones, grid);
+        return layout;
+
+    }
+
 }
