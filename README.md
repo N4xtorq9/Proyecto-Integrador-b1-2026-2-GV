@@ -133,7 +133,7 @@ git clone -b feature-main https://github.com/N4xtorq9/Proyecto-Integrador-b1-202
 cd Proyecto-Integrador-b1-2026-2-GV
 ```
 
-###💻 Modo desarrollo
+### Modo desarrollo
 
 ```bash
 ./mvnw          # Linux / macOS
