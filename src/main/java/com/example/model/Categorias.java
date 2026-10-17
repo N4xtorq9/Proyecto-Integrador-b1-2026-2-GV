@@ -1,14 +1,9 @@
 package com.example.model;
 
+
 public class Categorias {
     private int idCategoria;
     private String nombreCategoria;
-
-
-    public Categorias(int idCategoria, String nombreCategoria) {
-        this.idCategoria = idCategoria;
-        this.nombreCategoria = nombreCategoria;
-    }
 
 
     public Categorias(int idCategoria, String nombreCategoria) {
@@ -39,7 +34,7 @@ public class Categorias {
 
     @Override
     public String toString() {
-        return "Categorias [IdCategoria=" + IdCategoria + ", nombreCategoria=" + nombreCategoria + "]";
+        return "Categorias [IdCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria + "]";
     }
 }
 

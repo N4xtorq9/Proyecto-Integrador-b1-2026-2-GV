@@ -1,3 +1,5 @@
+package com.example.model;
+
 public class FotosProducto {
 
     private int IdFoto;

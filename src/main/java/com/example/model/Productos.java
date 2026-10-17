@@ -1,18 +1,22 @@
+package com.example.model;
+
 public class Productos {
 
     private int idProducto; // para que sea autogenerado por la BD
     private int IdUsuario;
+    private int IdCategoria;
+    private int IdAdministrador;
     private String NombreProducto;
     private String Descripcion;
-    private int IdCategoria;
     private String Estado;
 
-    public Productos(int idProducto, int IdUsuario, String NombreProducto, String Descripcion, int IdCategoria, String Estado) {
+    public Productos(int idProducto, int IdUsuario, int IdCategoria, int IdAdministrador, String NombreProducto, String Descripcion, String Estado) {
         this.idProducto = idProducto;
         this.IdUsuario = IdUsuario;
+        this.IdCategoria = IdCategoria;
+        this.IdAdministrador = IdAdministrador;
         this.NombreProducto = NombreProducto;
         this.Descripcion = Descripcion;
-        this.IdCategoria = IdCategoria;
         this.Estado = Estado;
     }
 
@@ -28,44 +32,54 @@ public class Productos {
         return IdUsuario;
     }
 
-    public void setIdUsuario(int IdUsuario) {
-        this.IdUsuario = IdUsuario;
-    }
-
-    public String getNombreProducto() {
-        return NombreProducto;
-    }
-
-    public void setNombreProducto(String NombreProducto) {
-        this.NombreProducto = NombreProducto;
-    }
-
-    public String getDescripcion() {
-        return Descripcion;
-    }
-
-    public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+    public void setIdUsuario(int idUsuario) {
+        IdUsuario = idUsuario;
     }
 
     public int getIdCategoria() {
         return IdCategoria;
     }
 
-    public void setIdCategoria(int IdCategoria) {
-        this.IdCategoria = IdCategoria;
+    public void setIdCategoria(int idCategoria) {
+        IdCategoria = idCategoria;
+    }
+
+    public int getIdAdministrador() {
+        return IdAdministrador;
+    }
+
+    public void setIdAdministrador(int idAdministrador) {
+        IdAdministrador = idAdministrador;
+    }
+
+    public String getNombreProducto() {
+        return NombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        NombreProducto = nombreProducto;
+    }
+
+    public String getDescripcion() {
+        return Descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        Descripcion = descripcion;
     }
 
     public String getEstado() {
         return Estado;
     }
 
-    public void setEstado(String Estado) {
-        this.Estado = Estado;
+    public void setEstado(String estado) {
+        Estado = estado;
     }
 
     @Override
     public String toString() {
-        return "Productos [idProducto=" + idProducto + ", IdUsuario=" + IdUsuario + ", NombreProducto=" + NombreProducto + ", Descripcion=" + Descripcion + ", IdCategoria=" + IdCategoria + ", Estado=" + Estado + "]";
+        return "Productos [idProducto=" + idProducto + ", IdUsuario=" + IdUsuario + ", IdCategoria=" + IdCategoria
+                + ", IdAdministrador=" + IdAdministrador + ", NombreProducto=" + NombreProducto + ", Descripcion="
+                + Descripcion + ", Estado=" + Estado + "]";
     }
 }

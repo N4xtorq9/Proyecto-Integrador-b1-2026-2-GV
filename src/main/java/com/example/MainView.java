@@ -49,10 +49,9 @@ public class MainView extends VerticalLayout {
         TextField claveField = new TextField("Clave");
         TextField fechaNacimientoField = new TextField("Fecha de Nacimiento");
         TextField telefonoField = new TextField("Teléfono");
-        TextField direccionField = new TextField("Dirección");
         TextField estadoField = new TextField("Estado");
 
-        FormLayout form = new FormLayout(idField, nombreField, emailField, claveField, fechaNacimientoField, telefonoField, direccionField, estadoField);
+        FormLayout form = new FormLayout(idField, nombreField, emailField, claveField, fechaNacimientoField, telefonoField, estadoField);
 
         Button btnCrear = new Button("Crear", e -> 
             Notification.show("Usuarios - Crear: " + nombreField.getValue())
@@ -79,7 +78,6 @@ public class MainView extends VerticalLayout {
             claveField.clear();
             fechaNacimientoField.clear();
             telefonoField.clear();
-            direccionField.clear();
             estadoField.clear();
         });
 
@@ -95,8 +93,7 @@ public class MainView extends VerticalLayout {
         grid.addColumn(row -> row[3]).setHeader("Clave").setAutoWidth(true);
         grid.addColumn(row -> row[4]).setHeader("Fecha de Nacimiento").setAutoWidth(true);
         grid.addColumn(row -> row[5]).setHeader( "Teléfono").setAutoWidth(true);
-        grid.addColumn(row -> row[6]).setHeader("Dirección").setAutoWidth(true);
-        grid.addColumn(row -> row[7]).setHeader("Estado").setAutoWidth(true);
+        grid.addColumn(row -> row[6]).setHeader("Estado").setAutoWidth(true);
 
         layout.add(form, acciones, grid);
         return layout;
@@ -119,30 +116,30 @@ public class MainView extends VerticalLayout {
         TextField estadoField = new TextField("Estado");
         TextField fechaRegistroField = new TextField("Fecha de Registro");
 
-        FormLayout form = new FormLayout(idField, tituloField, categoriaField);
+        FormLayout form = new FormLayout(idAdministradorField, nombreField, emailField, claveField, telefonoField, direccionField, rolField, estadoField, fechaRegistroField);
 
         Button btnCrear = new Button("Crear", e -> 
-            Notification.show("Administradores - Crear: " + tituloField.getValue())
+            Notification.show("Administradores - Crear: " + nombreField.getValue())
         );
         btnCrear.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         Button btnConsultar = new Button("Consultar", e -> 
-            Notification.show("Administradores - Consultar Código: " + idField.getValue())
+            Notification.show("Administradores - Consultar Código: " + idAdministradorField.getValue())
         );
 
         Button btnActualizar = new Button("Actualizar", e -> 
-            Notification.show("Administradores - Actualizar Código: " + idField.getValue())
+            Notification.show("Administradores - Actualizar Código: " + idAdministradorField.getValue())
         );
 
         Button btnEliminar = new Button("Eliminar", e -> 
-            Notification.show("Administradores - Eliminar Código: " + idField.getValue())
+            Notification.show("Administradores - Eliminar Código: " + idAdministradorField.getValue())
         );
         btnEliminar.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
         Button btnLimpiar = new Button("Limpiar", e -> {
-            idField.clear();
-            tituloField.clear();
-            categoriaField.clear();
+            nombreField.clear();
+            idAdministradorField.clear();
+            idAdministradorField.clear();
         });
 
         HorizontalLayout acciones = new HorizontalLayout(
@@ -174,7 +171,7 @@ public class MainView extends VerticalLayout {
         TextField idField = new TextField("idCategoria / ID");
         TextField nombreCategoriaField = new TextField("Nombre de la Categoría");
 
-        FormLayout form = new FormLayout(idField, nombreCategoriaField, categoriaField);
+        FormLayout form = new FormLayout(idField, nombreCategoriaField);
 
         Button btnCrear = new Button("Crear", e -> 
             Notification.show("Categorías - Crear: " + nombreCategoriaField.getValue())
@@ -220,12 +217,13 @@ public class MainView extends VerticalLayout {
 
         TextField idProductoField = new TextField("Id Producto / ID");
         TextField idUsuarioField = new TextField("Id Usuario");
+        TextField idCategoriaField = new TextField("Id Categoria");
+        TextField IdAdministradorField = new TextField("Id Administrador");
         TextField nombreProductoField = new TextField("Nombre del Producto");
         TextField descripcionField = new TextField("Descripción");
-        TextField idCategoriaField = new TextField("Id Categoria");
         TextField estadoField = new TextField("Estado");
 
-        FormLayout form = new FormLayout(idProductoField, idUsuarioField, nombreProductoField, descripcionField, idCategoriaField, estadoField);
+        FormLayout form = new FormLayout(idProductoField, idUsuarioField, idCategoriaField, IdAdministradorField, nombreProductoField, descripcionField, estadoField);
 
         Button btnCrear = new Button("Crear", e -> 
             Notification.show("Productos - Crear: " + nombreProductoField.getValue())
@@ -248,9 +246,10 @@ public class MainView extends VerticalLayout {
         Button btnLimpiar = new Button("Limpiar", e -> {
             idProductoField.clear();
             idUsuarioField.clear();
+            idCategoriaField.clear();
+            IdAdministradorField.clear();
             nombreProductoField.clear();
             descripcionField.clear();
-            idCategoriaField.clear();
             estadoField.clear();
         });
 
@@ -262,10 +261,11 @@ public class MainView extends VerticalLayout {
         Grid<String[]> grid = new Grid<>();
         grid.addColumn(row -> row[0]).setHeader("Id Producto").setAutoWidth(true);
         grid.addColumn(row -> row[1]).setHeader("Id Usuario").setAutoWidth(true);
-        grid.addColumn(row -> row[2]).setHeader("Nombre del Producto").setAutoWidth(true);
-        grid.addColumn(row -> row[3]).setHeader("Descripción").setAutoWidth(true);
-        grid.addColumn(row -> row[4]).setHeader("Id Categoria").setAutoWidth(true);
-        grid.addColumn(row -> row[5]).setHeader("Estado").setAutoWidth(true);
+        grid.addColumn(row -> row[2]).setHeader("Id Categoria").setAutoWidth(true);
+        grid.addColumn(row -> row[3]).setHeader("Id Administrador").setAutoWidth(true);
+        grid.addColumn(row -> row[4]).setHeader("Nombre del Producto").setAutoWidth(true);
+        grid.addColumn(row -> row[5]).setHeader("Descripción").setAutoWidth(true);
+        grid.addColumn(row -> row[6]).setHeader("Estado").setAutoWidth(true);
 
         layout.add(form, acciones, grid);
         return layout;
@@ -280,9 +280,10 @@ public class MainView extends VerticalLayout {
         TextField idIntercambioField = new TextField("Id Intercambio / ID");
         TextField idUsuarioField = new TextField("Id Usuario");
         TextField idProductoField = new TextField("Id Producto");
+        TextField IdAdministradorField = new TextField("Id Administrador");
         TextField estadoField = new TextField("Estado");
 
-        FormLayout form = new FormLayout(idIntercambioField, idUsuarioField, idProductoField, estadoField);
+        FormLayout form = new FormLayout(idIntercambioField, idUsuarioField, idProductoField, IdAdministradorField, estadoField);
 
         Button btnCrear = new Button("Crear", e -> 
             Notification.show("Intercambios - Crear: " + idIntercambioField.getValue())
@@ -306,6 +307,7 @@ public class MainView extends VerticalLayout {
             idIntercambioField.clear();
             idUsuarioField.clear();
             idProductoField.clear();
+            IdAdministradorField.clear();
             estadoField.clear();
         });
         
@@ -318,7 +320,8 @@ public class MainView extends VerticalLayout {
         grid.addColumn(row -> row[0]).setHeader("Id Intercambio").setAutoWidth(true);
         grid.addColumn(row -> row[1]).setHeader("Id Usuario").setAutoWidth(true);
         grid.addColumn(row -> row[2]).setHeader("Id Producto").setAutoWidth(true);
-        grid.addColumn(row -> row[3]).setHeader("Estado").setAutoWidth(true);
+        grid.addColumn(row -> row[3]).setHeader("Id Administrador").setAutoWidth(true);
+        grid.addColumn(row -> row[4]).setHeader("Estado").setAutoWidth(true);
 
         layout.add(form, acciones, grid);
         return layout;
