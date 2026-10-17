@@ -3,57 +3,55 @@ package com.example.model;
 import java.time.LocalDateTime;
 
 public class Usuario {
-    private Long id; // para que sea autogenerado por la BD
+    private Long idUsuarios; // para que sea autogenerado por la BD
     private String nombre;
-    private String apellido;
     private String email;
+    private String clave; // para almacenar la contraseña encriptada
+    private LocalDateTime fechaNacimiento;
     private String telefono;
-    private String direccion;
     private String rol; // 'admin', 'usuario', etc.
     private String estado; // 'activo', 'inactivo', 'baneado'
-    private LocalDateTime fechaRegistro;
 
     // ===================
     // Constructor completo
     // ===================
-    public Usuario(Long id, String nombre, String apellido, String email, String telefono,
-            String direccion, String rol, String estado, LocalDateTime fechaRegistro) {
-        this.id = id;
+    public Usuario(Long idUsuarios, String nombre, String email, String clave, LocalDateTime fechaNacimiento, String telefono,
+            String direccion, String rol, String estado) {
+        this.idUsuarios = idUsuarios;
         this.nombre = nombre;
-        this.apellido = apellido;
         this.email = email;
-        this.telefono = telefono;
-        this.direccion = direccion;
+        this.clave = clave;
+        this.fechaNacimiento = fechaNacimiento;
+        this.telefono = telefono; 
         this.rol = rol;
         this.estado = estado;
-        this.fechaRegistro = fechaRegistro;
     }
 
     // ===================
     // Constructor sin ID
     // (para insertar nuevos usuarios sin ID)
     // ===================
-    public Usuario(String nombre, String apellido, String email, String telefono,
-            String direccion, String rol, String estado, LocalDateTime fechaRegistro) {
-        this(null, nombre, apellido, email, telefono, direccion, rol, estado, fechaRegistro);
+    public Usuario(String nombre, String email, String clave, LocalDateTime fechaNacimiento, String telefono, 
+        String direccion, String rol, String estado)  {
+        this(null, nombre, email, clave, fechaNacimiento, telefono, direccion, rol, estado);
     }
 
     // ===================
     // Constructor vacío
     // ===================
     public Usuario() {
-        this.fechaRegistro = LocalDateTime.now();
+        this.fechaNacimiento = LocalDateTime.now();
     }
 
     // ===================
     // Getters y setters
     // ===================
     public Long getId() {
-        return id;
+        return idUsuarios;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long idUsuarios) {
+        this.idUsuarios = idUsuarios;
     }
 
     public String getNombre() {
@@ -64,14 +62,6 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -80,20 +70,20 @@ public class Usuario {
         this.email = email;
     }
 
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
     public String getTelefono() {
         return telefono;
     }
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public String getRol() {
@@ -112,16 +102,16 @@ public class Usuario {
         this.estado = estado;
     }
 
-    public LocalDateTime getFechaRegistro() {
-        return fechaRegistro;
+    public LocalDateTime getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFechaRegistro(LocalDateTime fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     @Override
     public String toString() {
-        return "Usuario [id=" + id + ", nombre=" + nombre + ", email=" + email + ", rol=" + rol + "]";
+        return "Usuario [id=" + idUsuarios + ", nombre=" + nombre + ", email=" + email + ", rol=" + rol + "]";
     }
 }
